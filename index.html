@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover is required for the safe-area (notch / home bar) padding used in the layout -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#00381e" />
+
+    <!-- Browser / tab icon -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+
+    <!-- iOS "Add to Home Screen" -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="MR Delights" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <!-- Page Title -->
+    <title>MR Delights — Premium Dates & Nuts in Kerala</title>
+
+    <!-- SEO Description -->
+    <meta
+      name="description"
+      content="Premium imported dates, nuts, figs & seeds. Pure, fresh, luxurious — delivered across Kerala."
+    />
+
+    <!-- Open Graph. __SITE_URL__ is filled in at build time by vite.config.js (see README) -->
+    <meta
+      property="og:title"
+      content="MR Delights — Premium Dates & Nuts in Kerala"
+    />
+    <meta
+      property="og:description"
+      content="Shop premium dates, nuts, figs & seeds from MR Delights — delivered across Kerala."
+    />
+    <meta
+      property="og:image"
+      content="__SITE_URL__/previewLogo.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="__SITE_URL__/" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="MR Delights — Premium Dates & Nuts in Kerala"
+    />
+    <meta
+      name="twitter:description"
+      content="Shop premium dates, nuts, figs & seeds from MR Delights — delivered across Kerala."
+    />
+    <meta
+      name="twitter:image"
+      content="__SITE_URL__/previewLogo.png"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

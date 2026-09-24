@@ -1,0 +1,151 @@
+@import "tailwindcss" source(none);
+@source "../";
+
+@custom-variant dark (&:is(.dark *));
+/* mouse / trackpad only — false on phones and tablets */
+@custom-variant fine-hover (@media (hover: hover) and (pointer: fine));
+
+@theme inline {
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Outfit", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-green: var(--green);
+  --color-green-foreground: var(--green-foreground);
+  --color-beige: var(--beige);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.978 0.012 80);
+  --foreground: oklch(0.235 0.045 155);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.045 155);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.045 155);
+  --primary: oklch(0.298 0.077 158);
+  --primary-foreground: oklch(0.985 0.012 85);
+  --secondary: oklch(0.955 0.022 85);
+  --secondary-foreground: oklch(0.298 0.077 158);
+  --muted: oklch(0.945 0.018 85);
+  --muted-foreground: oklch(0.48 0.03 152);
+  --accent: oklch(0.766 0.135 87);
+  --accent-foreground: oklch(0.22 0.06 158);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.905 0.022 85);
+  --input: oklch(0.905 0.022 85);
+  --ring: oklch(0.766 0.135 87);
+
+  --gold: oklch(0.766 0.135 87);
+  --gold-foreground: oklch(0.22 0.06 158);
+  --green: oklch(0.298 0.077 158);
+  --green-foreground: oklch(0.985 0.012 85);
+  --beige: oklch(0.965 0.016 85);
+
+  --gradient-luxury: linear-gradient(140deg, oklch(0.298 0.077 158) 0%, oklch(0.19 0.055 158) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.87 0.14 92) 0%, oklch(0.766 0.135 87) 45%, oklch(0.66 0.12 80) 100%);
+  --shadow-luxury: 0 24px 70px -24px oklch(0.298 0.077 158 / 0.4);
+  --shadow-soft: 0 10px 34px -14px oklch(0.298 0.077 158 / 0.2);
+  --shadow-gold: 0 10px 40px -12px oklch(0.766 0.135 87 / 0.5);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer components {
+  .glass {
+    background: color-mix(in oklab, white 70%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in oklab, var(--gold) 25%, transparent);
+  }
+  .glass-dark {
+    background: color-mix(in oklab, var(--green) 75%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
+  }
+  .gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .luxury-card {
+    background: var(--color-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .luxury-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-luxury);
+  }
+}
+
+@utility bg-gold-grad {
+  background-image: var(--gradient-gold);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up .7s ease-out both; }
+
+
+/* ---- Responsive helpers (unlayered on purpose: they must win over @layer rules) ---- */
+
+/* Sticky header height: h-16 on phones, h-20 from the sm breakpoint, plus the notch inset */
+:root { --header-h: calc(4rem + env(safe-area-inset-top, 0px)); }
+@media (min-width: 40rem) {
+  :root { --header-h: calc(5rem + env(safe-area-inset-top, 0px)); }
+}
+
+/* First screen = whole visible area under the header (vh fallback, then svh) */
+.hero-viewport {
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+}
+
+/* Touch devices: don't leave a card "lifted" after a tap */
+@media (hover: none), (pointer: coarse) {
+  .luxury-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-soft);
+  }
+}
