@@ -45,7 +45,7 @@ export default function Contact() {
               <Mail className="w-5 h-5 text-accent" /> {CONTACT_EMAIL}
             </li>
             <li className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-accent" /> Kerala, India
+              <MapPin className="w-5 h-5 text-accent" /> 123, Example Street
             </li>
           </ul>
           <a

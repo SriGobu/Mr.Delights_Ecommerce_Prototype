@@ -2,9 +2,9 @@
 // Environment Variables) without touching the code. The digits-only form is
 // used for wa.me links; the display form is what visitors see.
 export const WHATSAPP_NUMBER =
-  import.meta.env.VITE_WHATSAPP_NUMBER || "123456789";
+  import.meta.env.VITE_WHATSAPP_NUMBER || "+91 XXXXX XXXXX";
 export const CONTACT_PHONE =
-  import.meta.env.VITE_CONTACT_PHONE || "+91 123456 79880";
+  import.meta.env.VITE_CONTACT_PHONE || "+91 XXXXX XXXXX";
 export const CONTACT_EMAIL =
   import.meta.env.VITE_CONTACT_EMAIL || "john.doe@example.com";
 
